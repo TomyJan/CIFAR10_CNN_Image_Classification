@@ -1,6 +1,16 @@
 {
     "cSpell.words": [
+        "annot",
         "CIFAR",
-        "Keras"
+        "crossentropy",
+        "datagen",
+        "featurewise",
+        "figsize",
+        "Keras",
+        "samplewise",
+        "xlabel",
+        "xticklabels",
+        "ylabel",
+        "yticklabels"
     ]
 }

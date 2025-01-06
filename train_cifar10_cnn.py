@@ -185,4 +185,17 @@ plt.show()
 
 # 打印分类报告
 print('\n分类报告:')
-print(classification_report(Y_true, Y_pred, target_names=labels))
+classification_report_str = classification_report(Y_true, Y_pred, target_names=labels)
+print(classification_report_str)
+
+# 保存分类报告
+with open('classification_report.txt', 'w', encoding='utf-8') as f:
+    # 保存时间戳
+    from datetime import datetime
+    f.write(f'训练时间: {datetime.now().strftime("%Y-%m-%d %H:%M:%S")}\n\n')
+    # 保存模型评估结果
+    f.write(f'测试损失: {scores[0]:.4f}\n')
+    f.write(f'测试精度: {scores[1]:.4f}\n\n')
+    # 保存分类报告
+    f.write('分类报告:\n')
+    f.write(classification_report_str)
