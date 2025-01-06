@@ -1,0 +1,20 @@
+# 深度学习框架
+tensorflow>=2.16.1
+
+# 科学计算和数据处理
+numpy>=1.26.0
+
+# 可视化
+matplotlib>=3.9.0
+seaborn>=0.13.0
+
+# 机器学习工具
+scikit-learn>=1.5.0
+
+# Jupyter支持（可选，如果需要运行notebook）
+jupyter>=1.0.0
+notebook>=7.0.0
+
+# 其他依赖
+pillow>=10.0.0  # 图像处理
+h5py>=3.10.0   # 模型保存
