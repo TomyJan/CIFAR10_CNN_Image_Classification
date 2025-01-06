@@ -47,12 +47,12 @@
 ## 项目结构
 
 ```
-├── cifar10-with-cnn-for-beginer.py    # 主要Python代码文件
+├── train_cifar10_cnn.py              # 主要Python代码文件
 ├── requirements.txt                    # 项目依赖文件
 ├── README.md                          # 项目文档
 ├── LICENSE                            # 许可证文件
 ├── saved_models/                      # 保存训练模型的目录
-│   └── best_model.h5                  # 训练过程中的最佳模型
+│   └── best_model.keras               # 训练过程中的最佳模型
 ├── 数据分布.png                        # 数据集分布可视化
 ├── 混淆矩阵.png                        # 模型预测结果混淆矩阵
 └── acc_loss.png                       # 训练过程准确率和损失曲线
@@ -84,7 +84,7 @@
    ```bash
    pip install -r requirements.txt
    ```
-3. 运行 `cifar10-with-cnn-for-beginer.py`
+3. 运行 `train_cifar10_cnn.py`
 
 ## 学习要点
 
@@ -108,3 +108,4 @@
 - 改进了数据分布可视化方法
 - 简化了代码结构，提高了可读性
 - 添加了自动保存最佳模型功能
+- 优化了文件命名，使其更加规范和专业
