@@ -8,18 +8,15 @@ from tensorflow.keras.preprocessing.image import ImageDataGenerator #图像数�
 from tensorflow.keras.models import Sequential #，搭建神经网络模型
 from tensorflow.keras.layers import Dense, Dropout, Activation, Flatten #，构建神经网络模型
 from tensorflow.keras.layers import Conv2D, MaxPooling2D #，构建卷积神经网络模型
-import os
 
 import numpy as np
-
 import seaborn as sns
-import matplotlib
 import matplotlib.pyplot as plt #设置参数
-plt.rcParams['font.sans-serif'] = ['SimHei'] # 显示中文
+plt.rcParams['font.sans-serif'] = ['MiSans', 'SimHei', 'Microsoft YaHei'] # 显示中文
 plt.rcParams['axes.unicode_minus'] = False # 显示负号
 
 from sklearn.metrics import confusion_matrix, classification_report  #导入混淆矩阵和分类报告模块，评估模型的性能
-import itertools
+import pandas as pd
 
 # 设置Keras的批处理大小
 batch_size = 32
@@ -39,10 +36,10 @@ print(x_test.shape[0], 'test samples')
 
 # 绘制训练集和测试集的类别分布
 fig, axs = plt.subplots(1, 2, figsize=(15, 5))
-sns.countplot(y=y_train.ravel(), ax=axs[0])
+sns.countplot(data=pd.DataFrame(y_train, columns=['label']), x='label', ax=axs[0])
 axs[0].set_title('训练集数据分布')
 axs[0].set_xlabel('类别')
-sns.countplot(y=y_test.ravel(), ax=axs[1])
+sns.countplot(data=pd.DataFrame(y_test, columns=['label']), x='label', ax=axs[1])
 axs[1].set_title('测试集数据分布')
 axs[1].set_xlabel('类别')
 plt.savefig('数据分布.png')
@@ -97,6 +94,16 @@ early_stopping = keras.callbacks.EarlyStopping(
     restore_best_weights=True
 )
 
+# 添加模型保存回调
+model_checkpoint = keras.callbacks.ModelCheckpoint(
+    filepath='saved_models/best_model.h5',
+    monitor='val_accuracy',
+    save_best_only=True,
+    save_weights_only=False,
+    mode='max',
+    verbose=1
+)
+
 # 训练模型
 if not data_augmentation:
     print('未使用数据增强。')
@@ -106,7 +113,7 @@ if not data_augmentation:
         epochs=epochs,
         validation_data=(x_test, y_test),
         shuffle=True,
-        callbacks=[early_stopping]
+        callbacks=[early_stopping, model_checkpoint]
     )
 else:
     print('使用实时数据增强。')
@@ -127,7 +134,8 @@ else:
         datagen.flow(x_train, y_train, batch_size=batch_size),
         epochs=epochs,
         validation_data=(x_test, y_test),
-        workers=4
+        workers=4,
+        callbacks=[early_stopping, model_checkpoint]
     )
 
 # 绘制训练历史

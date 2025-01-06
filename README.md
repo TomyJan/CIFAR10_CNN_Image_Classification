@@ -42,17 +42,20 @@
 - 优化器：RMSprop
 - 学习率：0.0001
 - 支持数据增强（可选）
+- 模型保存：自动保存验证集准确率最高的模型
 
 ## 项目结构
 
 ```
 ├── cifar10-with-cnn-for-beginer.py    # 主要Python代码文件
-├── cifar10-with-cnn-for-beginer.ipynb # Jupyter notebook版本
-├── saved_models/                       # 保存训练模型的目录
+├── requirements.txt                    # 项目依赖文件
+├── README.md                          # 项目文档
+├── LICENSE                            # 许可证文件
+├── saved_models/                      # 保存训练模型的目录
+│   └── best_model.h5                  # 训练过程中的最佳模型
 ├── 数据分布.png                        # 数据集分布可视化
 ├── 混淆矩阵.png                        # 模型预测结果混淆矩阵
-├── acc_loss.png                       # 训练过程准确率和损失曲线
-└── train.txt                          # 训练日志
+└── acc_loss.png                       # 训练过程准确率和损失曲线
 ```
 
 ## 可视化结果
@@ -64,12 +67,15 @@
 
 ## 环境要求
 
-- Python 3.x
-- TensorFlow 2.x
-- NumPy
-- Matplotlib
-- Seaborn
-- Scikit-learn
+项目依赖以下主要包：
+- TensorFlow >= 2.16.1
+- NumPy >= 1.26.0
+- Pandas >= 2.2.0
+- Matplotlib >= 3.9.0
+- Seaborn >= 0.13.0
+- Scikit-learn >= 1.5.0
+
+详细的依赖要求请参见 `requirements.txt`。
 
 ## 使用说明
 
@@ -78,7 +84,7 @@
    ```bash
    pip install -r requirements.txt
    ```
-3. 运行 `cifar10-with-cnn-for-beginer.py` 或打开 Jupyter Notebook 运行 `cifar10-with-cnn-for-beginer.ipynb`
+3. 运行 `cifar10-with-cnn-for-beginer.py`
 
 ## 学习要点
 
@@ -94,3 +100,11 @@
 - 训练过程可能需要较长时间
 - 使用了早停机制来防止过拟合
 - 可以通过调整参数来优化模型性能
+
+## 最近更新
+
+- 优化了项目结构，删除了冗余文件
+- 更新了依赖包版本要求
+- 改进了数据分布可视化方法
+- 简化了代码结构，提高了可读性
+- 添加了自动保存最佳模型功能
