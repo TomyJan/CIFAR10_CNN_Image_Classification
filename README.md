@@ -48,11 +48,13 @@
 
 ```
 ├── train_cifar10_cnn.py              # 主要Python代码文件
+├── predict.py                         # 使用训练好的模型进行预测
 ├── requirements.txt                    # 项目依赖文件
 ├── README.md                          # 项目文档
 ├── LICENSE                            # 许可证文件
 ├── saved_models/                      # 保存训练模型的目录
 │   └── best_model.keras               # 训练过程中的最佳模型
+├── test_images/                       # 测试图片目录
 ├── 数据分布.png                        # 数据集分布可视化
 ├── 混淆矩阵.png                        # 模型预测结果混淆矩阵
 ├── acc_loss.png                       # 训练过程准确率和损失曲线
@@ -86,7 +88,48 @@
    ```bash
    pip install -r requirements.txt
    ```
-3. 运行 `train_cifar10_cnn.py`
+3. 训练模型（如果需要）：
+   ```bash
+   python train_cifar10_cnn.py
+   ```
+4. 使用训练好的模型进行预测：
+   ```bash
+   python predict.py <图片路径1> [图片路径2 ...]
+   ```
+
+### 示例图片
+
+项目在 `test_images` 目录下提供了来自CIFAR10测试集的示例图片：
+- airplane_sample.png：飞机示例
+- automobile_sample.png：汽车示例
+- bird_sample.png：鸟类示例
+- cat_sample.png：猫示例
+- deer_sample.png：鹿示例
+- dog_sample.png：狗示例
+- frog_sample.png：青蛙示例
+- horse_sample.png：马示例
+- ship_sample.png：船示例
+- truck_sample.png：卡车示例
+
+您可以使用这些示例图片来测试模型的预测效果：
+```bash
+# 预测单张图片
+python predict.py test_images/airplane_sample.png
+
+# 预测多张图片
+python predict.py test_images/airplane_sample.png test_images/cat_sample.png test_images/ship_sample.png
+```
+
+您也可以使用自己的图片进行测试，建议使用与CIFAR10数据集类似的图片（包含完整的目标对象，背景相对简单）以获得更好的预测效果。
+
+## 预测功能
+
+项目提供了独立的预测脚本 `predict.py`，具有以下特点：
+- 支持预测单张或多张图片
+- 自动调整输入图片尺寸为32x32
+- 显示预测结果和置信度
+- 可视化预测图片
+- 输出所有类别的概率分布
 
 ## 学习要点
 
@@ -111,3 +154,4 @@
 - 简化了代码结构，提高了可读性
 - 添加了自动保存最佳模型功能
 - 优化了文件命名，使其更加规范和专业
+- 添加了独立的预测脚本，支持使用训练好的模型进行预测

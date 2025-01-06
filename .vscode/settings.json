@@ -6,6 +6,7 @@
         "datagen",
         "featurewise",
         "figsize",
+        "imsave",
         "Keras",
         "samplewise",
         "xlabel",
