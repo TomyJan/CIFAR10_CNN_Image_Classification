@@ -9,6 +9,8 @@
         "imsave",
         "Keras",
         "samplewise",
+        "softmax",
+        "Sprop",
         "xlabel",
         "xticklabels",
         "ylabel",
