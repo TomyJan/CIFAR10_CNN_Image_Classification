@@ -270,3 +270,9 @@ python predict.py test_images/airplane_sample.png test_images/cat_sample.png tes
 2. 保持0.25的Dropout率防止过拟合
 3. 批次大小32在效率和效果间取得平衡
 4. 如果训练时间允许，可以开启数据增强
+
+## 许可证
+
+本项目采用 MPL-2.0 许可证，详见 [LICENSE](LICENSE) 文件
+
+本项目代码优化及文档编写完全使用 [Cursor](https://www.cursor.com/) 完成, 第一个 commit 为原始代码
